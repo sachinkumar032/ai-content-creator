@@ -1,0 +1,78 @@
+{
+  "name": "AI Content Creator Pipeline",
+  "nodes": [
+    {
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "parameters": {
+        "rule": { "interval": [{ "field": "cronExpression", "expression": "0 9 * * *" }] }
+      },
+      "position": [100, 300]
+    },
+    {
+      "name": "Set Topic",
+      "type": "n8n-nodes-base.set",
+      "parameters": {
+        "values": {
+          "string": [
+            { "name": "topic", "value": "5 Python tricks that will blow your mind" },
+            { "name": "platform", "value": "youtube" },
+            { "name": "tone", "value": "engaging" }
+          ]
+        }
+      },
+      "position": [300, 300]
+    },
+    {
+      "name": "Run Pipeline",
+      "type": "n8n-nodes-base.httpRequest",
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8000/run-pipeline",
+        "sendBody": true,
+        "bodyContentType": "json",
+        "jsonBody": "={ \"topic\": \"{{ $json.topic }}\", \"platform\": \"{{ $json.platform }}\", \"tone\": \"{{ $json.tone }}\" }"
+      },
+      "position": [500, 300]
+    },
+    {
+      "name": "Check Status",
+      "type": "n8n-nodes-base.if",
+      "parameters": {
+        "conditions": {
+          "string": [{ "value1": "={{ $json.status }}", "operation": "equals", "value2": "success" }]
+        }
+      },
+      "position": [700, 300]
+    },
+    {
+      "name": "Notify Success",
+      "type": "n8n-nodes-base.slack",
+      "parameters": {
+        "channel": "#content-pipeline",
+        "text": "✅ New video published!\nTitle: {{ $json.script.title }}\nYouTube: https://youtu.be/{{ $json.uploads.youtube }}"
+      },
+      "position": [900, 200]
+    },
+    {
+      "name": "Notify Error",
+      "type": "n8n-nodes-base.slack",
+      "parameters": {
+        "channel": "#content-pipeline",
+        "text": "❌ Pipeline failed. Check logs."
+      },
+      "position": [900, 400]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": { "main": [[{ "node": "Set Topic", "type": "main", "index": 0 }]] },
+    "Set Topic":        { "main": [[{ "node": "Run Pipeline", "type": "main", "index": 0 }]] },
+    "Run Pipeline":     { "main": [[{ "node": "Check Status", "type": "main", "index": 0 }]] },
+    "Check Status": {
+      "main": [
+        [{ "node": "Notify Success", "type": "main", "index": 0 }],
+        [{ "node": "Notify Error",   "type": "main", "index": 0 }]
+      ]
+    }
+  }
+}
