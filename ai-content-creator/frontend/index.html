@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Autonomous AI Content Creator</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      background: #0f0f14;
+      color: white;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #AFA9EC;
+      color: #26215C;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-family: 'DM Mono', monospace;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #534AB7;
+    }
+
+    h1 {
+      font-size: 64px;
+      line-height: 1;
+      margin: 0;
+    }
+
+    h1 span {
+      color: #AFA9EC;
+    }
+
+    .subtitle {
+      max-width: 700px;
+      margin: 20px auto;
+      color: #cccccc;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 20px;
+      margin-top: 50px;
+    }
+
+    .card {
+      background: #1b1b24;
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 42px;
+      color: #AFA9EC;
+    }
+
+    .card p {
+      margin-top: 10px;
+      color: #b0b0b0;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    .pipeline {
+      margin-top: 80px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 20px;
+    }
+
+    .step {
+      background: #1b1b24;
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .step:hover {
+      transform: translateY(-5px);
+    }
+
+    .step i {
+      font-size: 38px;
+      color: #AFA9EC;
+      margin-bottom: 15px;
+    }
+
+    .step-number {
+      font-size: 12px;
+      color: #777;
+      font-family: 'DM Mono', monospace;
+    }
+
+    .step-title {
+      font-size: 20px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .step-tech {
+      margin-top: 5px;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .features {
+      margin-top: 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+      gap: 30px;
+    }
+
+    .feature-box {
+      background: #1b1b24;
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .feature-box ul {
+      padding-left: 20px;
+      line-height: 2;
+      color: #ddd;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .pill {
+      background: #2a2a38;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+
+    .cta {
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    .cta button {
+      background: #534AB7;
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .cta button:hover {
+      background: #6d63d8;
+    }
+
+    footer {
+      margin-top: 80px;
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+      padding-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="badge">
+        <div class="dot"></div>
+        Autonomous System · Zero Human Intervention
+      </div>
+
+      <h1>
+        AI Content <br>
+        <span>Creator</span>
+      </h1>
+
+      <p class="subtitle">
+        End-to-end automation platform that generates scripts, voiceovers,
+        thumbnails, videos, and uploads content automatically to social media.
+      </p>
+
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+
+      <div class="card">
+        <h2>6</h2>
+        <p>PIPELINE STAGES</p>
+      </div>
+
+      <div class="card">
+        <h2>100%</h2>
+        <p>AUTOMATED</p>
+      </div>
+
+      <div class="card">
+        <h2>5+</h2>
+        <p>PLATFORMS</p>
+      </div>
+
+      <div class="card">
+        <h2>0</h2>
+        <p>HUMAN EDITS</p>
+      </div>
+
+    </section>
+
+    <!-- PIPELINE -->
+    <section class="pipeline">
+
+      <div class="section-title">
+        Automation Pipeline
+      </div>
+
+      <div class="steps">
+
+        <div class="step">
+          <i class="ti ti-writing"></i>
+          <div class="step-number">01</div>
+          <div class="step-title">Script Gen</div>
+          <div class="step-tech">GPT-4o</div>
+        </div>
+
+        <div class="step">
+          <i class="ti ti-microphone"></i>
+          <div class="step-number">02</div>
+          <div class="step-title">Voiceover</div>
+          <div class="step-tech">TTS + Whisper</div>
+        </div>
+
+        <div class="step">
+          <i class="ti ti-photo"></i>
+          <div class="step-number">03</div>
+          <div class="step-title">Thumbnail</div>
+          <div class="step-tech">DALL·E 3</div>
+        </div>
+
+        <div class="step">
+          <i class="ti ti-cut"></i>
+          <div class="step-number">04</div>
+          <div class="step-title">Edit & Render</div>
+          <div class="step-tech">FFmpeg</div>
+        </div>
+
+        <div class="step">
+          <i class="ti ti-send"></i>
+          <div class="step-number">05</div>
+          <div class="step-title">Auto Upload</div>
+          <div class="step-tech">n8n</div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+
+      <div class="feature-box">
+
+        <div class="section-title">Features</div>
+
+        <ul>
+          <li>AI script generation</li>
+          <li>Text-to-speech voice synthesis</li>
+          <li>AI image/video generation</li>
+          <li>Automated editing pipeline</li>
+          <li>Social media auto-upload system</li>
+          <li>Analytics dashboard</li>
+        </ul>
+
+      </div>
+
+      <div class="feature-box">
+
+        <div class="section-title">Tech Stack</div>
+
+        <div class="tech-stack">
+          <div class="pill">Python</div>
+          <div class="pill">OpenAI APIs</div>
+          <div class="pill">FFmpeg</div>
+          <div class="pill">n8n</div>
+          <div class="pill">React</div>
+          <div class="pill">Whisper AI</div>
+          <div class="pill">YouTube API</div>
+          <div class="pill">TikTok API</div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <button onclick="exploreBuild()">
+        Explore the Build →
+      </button>
+    </section>
+
+    <footer>
+      v2.4.0 · Fully Autonomous AI Content System
+    </footer>
+
+  </div>
+
+  <script>
+    function exploreBuild() {
+      alert("OpenAI API integration module coming soon!");
+    }
+  </script>
+
+</body>
+</html>
+
